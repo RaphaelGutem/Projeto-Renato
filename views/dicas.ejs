@@ -1,0 +1,22 @@
+
+<%- include('partials/header') %>
+
+<section>
+
+<h2>Envie sua dica</h2>
+<form action="/dicas" method="POST">
+    <label>Nome:</label><br>
+    <input type="text" name="nome"><br><br>
+    
+    <label>Email:</label><br>
+    <input type="email" name="email"><br><br>
+    
+    <label>Dica:</label><br>
+    <textarea name="dica"></textarea><br><br><br>
+    
+    <button type="submit">Enviar</button>
+    <br>
+</form>
+
+</section>
+<%- include('partials/footer') %>
