@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+
+<h2>Login</h2>
+
+<form action="/login" method="POST">
+  <input type="text" name="nome" placeholder="Nome" required>
+  <input type="password" name="senha" placeholder="Senha" required>
+  <button type="submit">Entrar</button>
+</form>
+
+<% if (erro) { %>
+  <p style="color:red;"><%= erro %></p>
+<% } %>
+
+<%- include('partials/footer') %>

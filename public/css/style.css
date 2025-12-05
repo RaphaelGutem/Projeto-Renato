@@ -1,24 +1,108 @@
 :root {
     --light: #dce9ff;       /* azul bem claro */
-    --primary: #6fa8dc;     /* azul médio suave */
+    --primary: #437eca;     /* azul médio suave */
     --text-light: #ffffff;
     --radius: 12px;
     --transition: 0.3s ease;
 }
 
+/* BODY E PAPEL DE PAREDE */
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background: #ffffff;
     color: #333;
+
+    /* Papel de parede */
+    background-image: url('/images/well.jpeg'); /* coloque sua imagem em public/images */
+    background-size: cover;       /* cobre toda a tela */
+    background-repeat: no-repeat; /* não repete a imagem */
+    background-attachment: fixed; /* fixa a imagem ao rolar a página */
 }
 
 /* HEADER & FOOTER */
 header, footer {
-    background-color: var(--primary);
-    color: var(--text-light);
+    background-color: rgba(245, 245, 220, 0.9); /* mesma cor dos containers */
+    color: var(--primary);
     padding: 12px 20px;
     font-style: italic;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* mesma sombra suave dos containers */
+}
+
+.container-neurodiversidade {
+    background: rgba(245, 245, 220, 0.9); /* cor bege clara semi-transparente */
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.container-bemvindo {
+    background: rgba(245, 245, 220, 0.9); /* bege claro */
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.container-publico {
+    background: rgba(245, 245, 220, 0.9); /* azul clarinho */
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+/** sobre **/
+
+.container-sobre {
+    background: rgba(245, 245, 220, 0.9); /* bege claro */
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.container-efeitos {
+    background: rgba(245, 245, 220, 0.9); /* azul clarinho */
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.container-diagnostico {
+    background: rgba(245, 245, 220, 0.9); /* bege/laranja clarinho */
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    margin-bottom: 30px;
+    font-size: 20px;
+    
+}
+
+/** dica **/
+.container-dica {
+    background: rgba(220, 233, 255, 0.9); /* azul clarinho */
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+}
+
+.container-dica h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+.container-dica p {
+    font-size: 18px;
+    line-height: 1.5;
 }
 
 /* NAV */
@@ -29,8 +113,97 @@ nav {
     padding: 10px 0;
 }
 
+/* --- ESTILO DOS BOTÕES --- */
+button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: var(--radius);
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+/* --- LISTA DE DICAS --- */
+.lista-dicas {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.dica-item {
+    background: rgba(245, 245, 220, 0.9);
+    padding: 18px 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+    font-size: 18px;
+}
+
+.dica-item p {
+    margin: 0 0 8px 0;
+}
+
+.dica-item small {
+    color: #555;
+}
+
+/* --- FORMULÁRIO DE DICAS --- */
+form textarea {
+    width: 100%;
+    padding: 10px;
+    resize: none;
+    border-radius: var(--radius);
+    border: 1px solid #9cb7d9;
+    background: #f5f8ff;
+    font-size: 16px;
+}
+
+/* --- ÁREA DO LOGIN --- */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radius);
+    border: 1px solid #9cb7d9;
+    margin-bottom: 15px;
+    background: #f5f8ff;
+    font-size: 16px;
+}
+
+/* Centralizar o título do login */
+h2 {
+    text-align: center;
+}
+
+/* Corrigir link com botão */
+a button {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+}
+
+/* Link de logout */
+a[href="/logout"] {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+
 nav a {
-    color: var(--text-light);
+    color: var(--primary); /* mesma cor dos títulos */
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
@@ -41,6 +214,7 @@ nav a:hover {
     opacity: 0.8;
     text-decoration: underline;
 }
+
 
 /* FORMS */
 form input, 
@@ -58,8 +232,23 @@ form textarea {
 /* SECTIONS (quadrados de texto) */
 section { 
     margin-bottom: 30px;
-    background: var(--light);
-    padding: 12px 15px;   /* 🔹 menor que antes */
+    background: rgba(220, 233, 255, 0.85); /* semi-transparente para legibilidade */
+    padding: 12px 15px;
     border-radius: var(--radius);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Títulos dentro de seções */
+section h2 {
+    color: var(--primary);
+}
+
+/* Links dentro das seções */
+section a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+section a:hover {
+    text-decoration: underline;
 }
