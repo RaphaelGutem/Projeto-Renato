@@ -1,16 +1,9 @@
-🌟 Portal Autismo – Node.js + Express + EJS
-
-Ou seja, não é um portal de notícias, mas sim um site informativo sobre autismo, com páginas, formulários e conteúdo explicativo.
-Vou manter a estrutura profissional do modelo e adaptar tudo para o seu site.
-
-✅ README COMPLETO — Portal Autismo
-
-Abaixo está o README final, 100% ajustado para o SEU PROJETO.
-
-Se quiser, posso gerar também versões menores, em inglês, com imagens, com GIFs, ou README.md exportável.
-
 🧩 Portal Autismo – Node.js + Express + EJS
 
+Um site informativo e educativo sobre o Transtorno do Espectro Autista (TEA), criado com Node.js, Express e EJS.
+O objetivo é apresentar conteúdos claros sobre autismo, seus níveis e permitir que visitantes enviem dicas/sugestões por meio de um formulário.
+
+🚀 Badges
 
 
 
@@ -18,8 +11,6 @@ Se quiser, posso gerar também versões menores, em inglês, com imagens, com GI
 
 
 
-Um site informativo simples e didático sobre o Transtorno do Espectro Autista (TEA), desenvolvido com Node.js, Express, EJS e CSS.
-O objetivo do projeto é apresentar conteúdos educacionais sobre autismo de forma clara e acessível, além de permitir interação do usuário por meio de envio de dicas/sugestões.
 
 📌 Índice
 
@@ -49,21 +40,15 @@ Licença
 
 💙 Sobre o projeto
 
-O Portal Autismo é um site focado em:
+O Portal Autismo é um site desenvolvido com fins educativos, contendo:
 
-Explicar o que é o Transtorno do Espectro Autista (TEA)
+✔ Explicação sobre o Transtorno do Espectro Autista (TEA)
+✔ Informações sobre seus níveis
+✔ Conteúdo acessível ao público
+✔ Um formulário para envio de dicas ou sugestões
+✔ Estrutura limpa e profissional utilizando Express + EJS
 
-Apresentar seus níveis e características
-
-Divulgar informações acessíveis ao público
-
-Permitir envio de dicas e sugestões via formulário
-
-Ser simples, didático e fácil de navegar
-
-O site foi criado com arquitetura limpa, usando Node.js + Express no backend e EJS como template engine.
-
-📁 Estrutura do projeto (resumo)
+📁 Estrutura do projeto
 site-autismo/
 │ app.js
 │ package.json
@@ -77,63 +62,51 @@ site-autismo/
 │   ├── niveis.ejs
 │   ├── dicas.ejs
 │   └── partials/
-│        ├── header.ejs
-│        └── footer.ejs
+│       ├── header.ejs
+│       └── footer.ejs
 │
 └── public/
     ├── css/
     │   └── style.css
     └── imagens/
 
-
 Funções principais:
 
-app.js → configura servidor, middlewares e rotas
-
-public/ → CSS, imagens e arquivos estáticos
+app.js → inicia servidor, carrega rotas e middlewares
 
 views/ → páginas renderizadas com EJS
 
-routes/public.js → define rotas públicas do portal
+routes/public.js → rotas abertas ao público
+
+public/ → arquivos estáticos (CSS, imagens, JS)
 
 ⚙️ Como o projeto funciona
 🎨 Views (EJS)
 
-As páginas usam EJS + partials para reaproveitar:
+O projeto utiliza partials para reaproveitar estruturas como header e footer.
 
-Header
-
-Menu
-
-Footer
-
-Exemplo:
+Exemplo dentro das views:
 
 <%- include('partials/header') %>
 
-<h2>O que é Autismo?</h2>
-
+<h1>O que é Autismo?</h1>
 <p>Conteúdo informativo aqui...</p>
 
 <%- include('partials/footer') %>
 
-🛣️ Rotas (public.js)
-
-Exemplo de rotas reais:
-
+🛣️ Rotas
+routes/public.js
 router.get('/', (req, res) => res.render('index'));
 router.get('/autismo', (req, res) => res.render('autismo'));
 router.get('/niveis', (req, res) => res.render('niveis'));
 router.get('/dicas', (req, res) => res.render('dicas'));
+
 router.post('/dicas', (req, res) => {
     console.log(req.body);
     res.send('Dica recebida!');
 });
 
-🔧 app.js (servidor)
-
-Configura Express, EJS e pasta pública:
-
+🔧 Servidor principal (app.js)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -145,7 +118,7 @@ app.use('/', publicRoutes);
 
 Node.js
 
-Express
+Express.js
 
 EJS
 
@@ -153,61 +126,59 @@ CSS
 
 HTML semântico
 
-Dotenv (configurações)
+dotenv (para configs)
 
-Simples e leve — ideal para projetos educativos ou iniciantes.
+Leve, simples e ideal para projetos educativos/iniciantes.
 
-🖥️ Como instalar e rodar
-1. Clone o repositório
+🖥️ Como instalar e executar
+1️⃣ Clone o repositório:
 git clone https://seu-repositorio-aqui.git
 cd site-autismo
 
-2. Instale as dependências
+2️⃣ Instale as dependências:
 npm install
 
-3. Inicie o servidor
+3️⃣ Inicie o servidor:
 npm start
 
 
-Ou usando nodemon (se instalado):
+Ou, se tiver nodemon:
 
 npm run dev
 
-4. Acesse
-http://localhost:3000
+
+Acesse:
+👉 http://localhost:3000
 
 🌐 Rotas disponíveis
 Rota	Descrição
 /	Página inicial
-/autismo	Explicação sobre o que é o autismo
-/niveis	Página descrevendo os níveis do espectro
-/dicas	Formulário para enviar dicas/sugestões
-POST /dicas	Processa o envio do formulário
+/autismo	Explicação sobre autismo
+/niveis	Níveis do espectro
+/dicas	Formulário de dicas
+POST /dicas	Processa envio de dicas
 ❗ Troubleshooting
+Tela branca no navegador
 
-Tela branca ao abrir o site?
-
-→ Verifique se adicionou:
+Verifique se existe no app.js:
 
 app.set('views', path.join(__dirname, 'views'));
 
+Erro ao carregar partials
 
-Erro ao carregar partials?
-
-→ Verifique:
+Verifique:
 
 views/partials/header.ejs
 views/partials/footer.ejs
 
+CSS não funciona
 
-CSS não funciona?
-
-→ Confirme:
+Confirme:
 
 app.use(express.static('public'));
 
 
-e que o arquivo está em:
+E que o arquivo está em:
 
 public/css/style.css
 
@@ -215,8 +186,7 @@ public/css/style.css
 Comando	Função
 npm install	Instala dependências
 npm start	Inicia o servidor
-npm run dev	Inicia com nodemon (auto-reload)
+npm run dev	Inicia com nodemon
 📝 Licença
 
-Este projeto é distribuído sob a licença MIT.
-Você pode usar, modificar e distribuir livremente.
+Este projeto está sob a licença MIT — você pode usar, modificar e distribuir livremente.
