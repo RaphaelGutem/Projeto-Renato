@@ -1,254 +1,195 @@
+/* ===========================
+   PALETA DE CORES
+   =========================== */
 :root {
-    --light: #dce9ff;       /* azul bem claro */
-    --primary: #437eca;     /* azul médio suave */
-    --text-light: #ffffff;
-    --radius: 12px;
-    --transition: 0.3s ease;
+    --primary: #3c6fd1;
+    --primary-light: #d8e6ff;
+    --background: #eef3ff;
+    --white: #ffffff;
+    --bege: #f5f1dc;
+    --radius: 14px;
+    --shadow: 0 4px 12px rgba(0,0,0,0.12);
+    --text: #333;
 }
 
-/* BODY E PAPEL DE PAREDE */
+/* ===========================
+   BASE DO SITE
+   =========================== */
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    color: #333;
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--background);
+    color: var(--text);
 
-    /* Papel de parede */
-    background-image: url('/images/well.jpeg'); /* coloque sua imagem em public/images */
-    background-size: cover;       /* cobre toda a tela */
-    background-repeat: no-repeat; /* não repete a imagem */
-    background-attachment: fixed; /* fixa a imagem ao rolar a página */
+    background-image: url('/images/wall.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
-/* HEADER & FOOTER */
-header, footer {
-    background-color: rgba(245, 245, 220, 0.9); /* mesma cor dos containers */
-    color: var(--primary);
-    padding: 12px 20px;
-    font-style: italic;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* mesma sombra suave dos containers */
-}
-
-.container-neurodiversidade {
-    background: rgba(245, 245, 220, 0.9); /* cor bege clara semi-transparente */
-    padding: 20px 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    margin-bottom: 30px;
-    font-size: 20px;
-}
-
-.container-bemvindo {
-    background: rgba(245, 245, 220, 0.9); /* bege claro */
-    padding: 25px 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    margin-bottom: 30px;
-    font-size: 20px;
-}
-
-.container-publico {
-    background: rgba(245, 245, 220, 0.9); /* azul clarinho */
-    padding: 25px 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    margin-bottom: 30px;
-    font-size: 20px;
-}
-
-/** sobre **/
-
-.container-sobre {
-    background: rgba(245, 245, 220, 0.9); /* bege claro */
-    padding: 25px 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    margin-bottom: 30px;
-    font-size: 20px;
-}
-
-.container-efeitos {
-    background: rgba(245, 245, 220, 0.9); /* azul clarinho */
-    padding: 25px 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    margin-bottom: 30px;
-    font-size: 20px;
-}
-
-.container-diagnostico {
-    background: rgba(245, 245, 220, 0.9); /* bege/laranja clarinho */
-    padding: 25px 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    margin-bottom: 30px;
-    font-size: 20px;
-    
-}
-
-/** dica **/
-.container-dica {
-    background: rgba(220, 233, 255, 0.9); /* azul clarinho */
-    padding: 20px 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+/* ===========================
+   HEADER E NAV
+   =========================== */
+header {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 18px 30px;
+    box-shadow: var(--shadow);
+    border-radius: 0 0 var(--radius) var(--radius);
     margin-bottom: 20px;
 }
 
-.container-dica h3 {
-    margin-top: 0;
-    color: var(--primary);
-}
-
-.container-dica p {
-    font-size: 18px;
-    line-height: 1.5;
-}
-
-/* NAV */
 nav {
     display: flex;
-    gap: 40px;
     justify-content: center;
-    padding: 10px 0;
+    gap: 40px;
 }
 
-/* --- ESTILO DOS BOTÕES --- */
-button {
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    padding: 10px 18px;
+nav a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+/* ===========================
+   CONTAINERS
+   =========================== */
+section, .container {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 950px;
     border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* Títulos */
+section h2 {
+    margin-top: 0;
+    color: var(--primary);
+    font-size: 26px;
+}
+
+/* Parágrafos */
+section p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* ===========================
+   FORMULÁRIOS
+   =========================== */
+form {
+    width: 90%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius);
+    border: 1px solid #aac4f0;
+    background: var(--primary-light);
     font-size: 16px;
+    margin-bottom: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: var(--radius);
+    background: var(--primary);
+    color: white;
+    font-size: 18px;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
 button:hover {
     opacity: 0.85;
 }
 
-/* --- LISTA DE DICAS --- */
+/* ===========================
+   LISTA DE DICAS
+   =========================== */
 .lista-dicas {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    margin-top: 20px;
 }
 
 .dica-item {
-    background: rgba(245, 245, 220, 0.9);
-    padding: 18px 22px;
-    border-radius: 12px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
-    font-size: 18px;
+    background: var(--bege);
+    padding: 18px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 .dica-item p {
-    margin: 0 0 8px 0;
+    margin: 0 0 8px;
+    font-size: 18px;
 }
 
 .dica-item small {
-    color: #555;
+    color: #666;
 }
 
-/* --- FORMULÁRIO DE DICAS --- */
-form textarea {
-    width: 100%;
-    padding: 10px;
-    resize: none;
-    border-radius: var(--radius);
-    border: 1px solid #9cb7d9;
-    background: #f5f8ff;
-    font-size: 16px;
-}
-
-/* --- ÁREA DO LOGIN --- */
-form {
-    max-width: 400px;
-    margin: 0 auto;
-    margin-top: 20px;
-}
-
-form input {
-    width: 100%;
-    padding: 10px;
-    border-radius: var(--radius);
-    border: 1px solid #9cb7d9;
-    margin-bottom: 15px;
-    background: #f5f8ff;
-    font-size: 16px;
-}
-
-/* Centralizar o título do login */
-h2 {
+/* ===========================
+   FOOTER
+   =========================== */
+footer {
     text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 15px;
+    margin-top: 30px;
+    font-style: italic;
+    box-shadow: var(--shadow);
+    border-radius: var(--radius) var(--radius) 0 0;
 }
 
-/* Corrigir link com botão */
-a button {
-    display: block;
-    margin-top: 10px;
-    width: 100%;
-}
-
-/* Link de logout */
-a[href="/logout"] {
-    display: inline-block;
-    margin-top: 10px;
-    color: var(--primary);
-    font-weight: bold;
-}
-
-
-nav a {
-    color: var(--primary); /* mesma cor dos títulos */
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    transition: var(--transition);
-}
-
-nav a:hover {
-    opacity: 0.8;
-    text-decoration: underline;
-}
-
-
-/* FORMS */
-form input, 
-form textarea {
-    width: 100%;
-    padding: 8px;
-    border-radius: var(--radius);
-    border: 1px solid #9cb7d9;
-    margin-top: 5px;
-    margin-bottom: 12px;
-    font-size: 15px;
-    background: #f5f8ff;
-}
-
-/* SECTIONS (quadrados de texto) */
-section { 
-    margin-bottom: 30px;
-    background: rgba(220, 233, 255, 0.85); /* semi-transparente para legibilidade */
-    padding: 12px 15px;
-    border-radius: var(--radius);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-}
-
-/* Títulos dentro de seções */
-section h2 {
-    color: var(--primary);
-}
-
-/* Links dentro das seções */
-section a {
+/* ===========================
+   TEXTO DE LOGIN E LINKS
+   =========================== */
+a {
     color: var(--primary);
     text-decoration: none;
+    transition: 0.3s;
 }
 
-section a:hover {
-    text-decoration: underline;
+a:hover {
+    opacity: 0.7;
+}
+
+/* ===========================
+   RESPONSIVIDADE
+   =========================== */
+@media (max-width: 600px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    section, .container {
+        width: 95%;
+        padding: 18px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
 }

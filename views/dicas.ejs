@@ -1,36 +1,37 @@
 <%- include('partials/header') %>
 
-<h2>Dicas da Comunidade</h2>
+<section class="container-publico">
+  <h2>Dicas da Comunidade</h2>
 
-<!-- Lista -->
-<div class="lista-dicas">
-  <% if (dicas.length > 0) { %>
-    <% dicas.forEach(d => { %>
-      <div class="dica-item">
-        <p><%= d.conteudo %></p>
-        <small>Enviado por: <strong><%= d.nome %></strong></small>
-      </div>
-    <% }) %>
+  <!-- Lista de todas as dicas (sempre aparece) -->
+  <div class="lista-dicas">
+    <% if (dicas.length > 0) { %>
+      <% dicas.forEach(d => { %>
+        <div class="dica-item">
+          <p><%= d.conteudo %></p>
+          <small>Enviado por: <strong><%= d.nome %></strong></small>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>Nenhuma dica cadastrada ainda.</p>
+    <% } %>
+  </div>
+
+  <hr>
+
+  <!-- Formulário de envio (apenas se logado) -->
+  <% if (user) { %>
+    <h3>Enviar nova dica</h3>
+    <form action="/dicas" method="POST">
+      <textarea name="conteudo" rows="4" required placeholder="Escreva sua dica..."></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <a href="/logout">Sair da conta</a>
   <% } else { %>
-    <p>Nenhuma dica cadastrada ainda.</p>
+    <p style="margin-top: 20px; text-align:center; color: #555;">
+      Para enviar uma dica, <a href="/login">faça login</a> ou <a href="/register">cadastre-se</a>.
+    </p>
   <% } %>
-</div>
-
-<hr>
-
-<!-- Formulário -->
-<% if (user) { %>
-  <h3>Enviar nova dica</h3>
-  <form action="/dicas" method="POST">
-    <textarea name="conteudo" rows="4" required placeholder="Escreva sua dica..."></textarea>
-    <button type="submit">Enviar</button>
-  </form>
-
-  <a href="/logout">Sair da conta</a>
-
-<% } else { %>
-  <p>Para enviar uma dica, faça login:</p>
-  <a href="/login"><button>Entrar</button></a>
-<% } %>
+</section>
 
 <%- include('partials/footer') %>

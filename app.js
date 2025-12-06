@@ -5,10 +5,11 @@ const connection = require('./config/db');
 
 const app = express();
 
-// EJS
+// Configuração do EJS
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
+// Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
@@ -19,16 +20,62 @@ app.use(session({
   saveUninitialized: false
 }));
 
-// Páginas principais
-app.get('/', (req, res) => res.render('index'));
-app.get('/sobre', (req, res) => res.render('sobre'));
+// Função auxiliar para passar user em todas as renderizações
+const renderWithUser = (res, view, params = {}) => {
+  res.render(view, { user: res.req.session.user || null, ...params });
+};
 
-// Página para login
-app.get('/login', (req, res) => {
-  res.render('login', { erro: null });
+// ==================== ROTAS ====================
+
+// Página inicial
+app.get('/', (req, res) => renderWithUser(res, 'index'));
+
+// Página sobre
+app.get('/sobre', (req, res) => renderWithUser(res, 'sobre'));
+
+// ==================== CADASTRO ====================
+
+// Formulário de cadastro
+app.get('/register', (req, res) => renderWithUser(res, 'register', { erro: null }));
+
+// Processar cadastro
+app.post('/register', (req, res) => {
+  const { nome, senha } = req.body;
+
+  if (!nome || !senha) {
+    return renderWithUser(res, 'register', { erro: 'Todos os campos são obrigatórios' });
+  }
+
+  // Verificar se o nome já existe
+  connection.query(
+    "SELECT * FROM usuarios WHERE nome = ?",
+    [nome],
+    (err, results) => {
+      if (err) return renderWithUser(res, 'register', { erro: 'Erro no servidor' });
+
+      if (results.length > 0) {
+        return renderWithUser(res, 'register', { erro: 'Nome já cadastrado' });
+      }
+
+      // Inserir novo usuário
+      connection.query(
+        "INSERT INTO usuarios (nome, senha) VALUES (?, ?)",
+        [nome, senha],
+        (err2) => {
+          if (err2) return renderWithUser(res, 'register', { erro: 'Erro ao cadastrar' });
+          res.redirect('/login');
+        }
+      );
+    }
+  );
 });
 
-// Autenticação do usuário
+// ==================== LOGIN ====================
+
+// Formulário de login
+app.get('/login', (req, res) => renderWithUser(res, 'login', { erro: null }));
+
+// Processar login
 app.post('/login', (req, res) => {
   const { nome, senha } = req.body;
 
@@ -39,7 +86,7 @@ app.post('/login', (req, res) => {
       if (err) return res.send("Erro no login");
 
       if (results.length === 0) {
-        return res.render("login", { erro: "Nome ou senha incorretos." });
+        return renderWithUser(res, 'login', { erro: "Nome ou senha incorretos." });
       }
 
       req.session.user = results[0];
@@ -54,7 +101,9 @@ app.get('/logout', (req, res) => {
   res.redirect('/dicas');
 });
 
-// Página de dicas (ver dicas)
+// ==================== DICAS ====================
+
+// Mostrar dicas
 app.get('/dicas', (req, res) => {
   const query = `
     SELECT u.nome, d.conteudo
@@ -65,10 +114,7 @@ app.get('/dicas', (req, res) => {
   connection.query(query, (err, results) => {
     if (err) return res.send("Erro ao carregar dicas");
 
-    res.render('dicas', {
-      dicas: results,
-      user: req.session.user || null
-    });
+    renderWithUser(res, 'dicas', { dicas: results });
   });
 });
 
@@ -90,4 +136,5 @@ app.post('/dicas', (req, res) => {
   );
 });
 
+// ==================== SERVIDOR ====================
 app.listen(3000, () => console.log('Servidor rodando em http://localhost:3000'));
