@@ -1,197 +1,3 @@
-<<<<<<< HEAD
-🧩 Portal Autismo – Node.js + Express + EJS
-
-Um site informativo e educativo sobre o Transtorno do Espectro Autista (TEA), criado com Node.js, Express e EJS.
-O objetivo é apresentar conteúdos claros sobre autismo, seus níveis e permitir que visitantes enviem dicas/sugestões por meio de um formulário.
-
-🚀 Badges
-
-
-
-
-
-
-
-
-📌 Índice
-
-Sobre o projeto
-
-Estrutura do projeto
-
-Como o projeto funciona
-
-Views (EJS)
-
-Rotas
-
-Controllers
-
-Tecnologias
-
-Como instalar e executar
-
-Rotas disponíveis
-
-Troubleshooting
-
-Comandos úteis
-
-Licença
-
-💙 Sobre o projeto
-
-O Portal Autismo é um site desenvolvido com fins educativos, contendo:
-
-✔ Explicação sobre o Transtorno do Espectro Autista (TEA)
-✔ Informações sobre seus níveis
-✔ Conteúdo acessível ao público
-✔ Um formulário para envio de dicas ou sugestões
-✔ Estrutura limpa e profissional utilizando Express + EJS
-
-📁 Estrutura do projeto
-site-autismo/
-│ app.js
-│ package.json
-│
-├── routes/
-│   └── public.js
-│
-├── views/
-│   ├── index.ejs
-│   ├── autismo.ejs
-│   ├── niveis.ejs
-│   ├── dicas.ejs
-│   └── partials/
-│       ├── header.ejs
-│       └── footer.ejs
-│
-└── public/
-    ├── css/
-    │   └── style.css
-    └── imagens/
-
-Funções principais:
-
-app.js → inicia servidor, carrega rotas e middlewares
-
-views/ → páginas renderizadas com EJS
-
-routes/public.js → rotas abertas ao público
-
-public/ → arquivos estáticos (CSS, imagens, JS)
-
-⚙️ Como o projeto funciona
-🎨 Views (EJS)
-
-O projeto utiliza partials para reaproveitar estruturas como header e footer.
-
-Exemplo dentro das views:
-
-<%- include('partials/header') %>
-
-<h1>O que é Autismo?</h1>
-<p>Conteúdo informativo aqui...</p>
-
-<%- include('partials/footer') %>
-
-🛣️ Rotas
-routes/public.js
-router.get('/', (req, res) => res.render('index'));
-router.get('/autismo', (req, res) => res.render('autismo'));
-router.get('/niveis', (req, res) => res.render('niveis'));
-router.get('/dicas', (req, res) => res.render('dicas'));
-
-router.post('/dicas', (req, res) => {
-    console.log(req.body);
-    res.send('Dica recebida!');
-});
-
-🔧 Servidor principal (app.js)
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
-app.use('/', publicRoutes);
-
-🧪 Tecnologias usadas
-
-Node.js
-
-Express.js
-
-EJS
-
-CSS
-
-HTML semântico
-
-dotenv (para configs)
-
-Leve, simples e ideal para projetos educativos/iniciantes.
-
-🖥️ Como instalar e executar
-1️⃣ Clone o repositório:
-git clone https://seu-repositorio-aqui.git
-cd site-autismo
-
-2️⃣ Instale as dependências:
-npm install
-
-3️⃣ Inicie o servidor:
-npm start
-
-
-Ou, se tiver nodemon:
-
-npm run dev
-
-
-Acesse:
-👉 http://localhost:3000
-
-🌐 Rotas disponíveis
-Rota	Descrição
-/	Página inicial
-/autismo	Explicação sobre autismo
-/niveis	Níveis do espectro
-/dicas	Formulário de dicas
-POST /dicas	Processa envio de dicas
-❗ Troubleshooting
-Tela branca no navegador
-
-Verifique se existe no app.js:
-
-app.set('views', path.join(__dirname, 'views'));
-
-Erro ao carregar partials
-
-Verifique:
-
-views/partials/header.ejs
-views/partials/footer.ejs
-
-CSS não funciona
-
-Confirme:
-
-app.use(express.static('public'));
-
-
-E que o arquivo está em:
-
-public/css/style.css
-
-📌 Comandos úteis
-Comando	Função
-npm install	Instala dependências
-npm start	Inicia o servidor
-npm run dev	Inicia com nodemon
-📝 Licença
-
-Este projeto está sob a licença MIT — você pode usar, modificar e distribuir livremente.
-=======
 
 # Portal de Notícias - Node.js + Express
 
@@ -204,21 +10,17 @@ Este projeto está sob a licença MIT — você pode usar, modificar e distribui
 
 Quick actions: use the **Codespaces** badge to create a codespace for this repo, or read the **Dev Containers** docs to open the project in a VS Code Dev Container.
 
-Um site informativo desenvolvido com **Node.js**, **Express**, **EJS** e **MySQL**.  
-Este README foi preparado de forma **didática e organizada**: primeiro apresentamos a **estrutura completa do projeto**, depois explicamos **cada parte** (views, rotas, controllers, models, config, scripts e arquivos públicos).  
-Por fim, você encontrará um guia detalhado mostrando **como configurar, conectar ao banco de dados e executar o projeto** em diferentes ambientes.
+Um site informativo desenvolvido com Node.js, Express, EJS, MySQL e Express-Session. O projeto possui páginas públicas, sistema de login, cadastro de usuários e um painel administrativo para criação de conteúdo simples.
 
 ## Índice
 
 - Sobre o projeto
 - Estrutura do projeto (resumo)
-- Arquitetura e como o projeto funciona (visão prática)
+- Arquitetura e como o projeto funciona
   - Views (EJS)
   - Routes
   - Controllers
   - Models / Acesso ao banco
-  - Seeders
-  - Middleware
   - Sessões e autenticação
 - Tecnologias
 - Pré-requisitos
@@ -226,10 +28,9 @@ Por fim, você encontrará um guia detalhado mostrando **como configurar, conect
   - Opção 1: Ambiente local
   - Opção 2: Dev Container (VS Code)
   - Opção 3: GitHub Codespaces
-- Inicialização (seed)
 - Rodando a aplicação
 - Rotas principais
-- Banco de dados (resumo)
+- Banco de dados
 - Troubleshooting
 - Comandos úteis
 - Contribuindo
@@ -238,7 +39,7 @@ Por fim, você encontrará um guia detalhado mostrando **como configurar, conect
 
 ## Sobre o projeto
 
-Este é um portal de notícias simplificado com área pública e área administrativa. O objetivo é ser material didático para aprender padrões web (MVC), autenticação com sessões, acesso a banco MySQL via `mysql2` e geração de views com EJS.
+Este projeto é um portal de informações e dicas, com páginas públicas e um fluxo simples de autenticação. O objetivo é ser material didático para aprender padrões web (MVC), autenticação com sessões, acesso a banco MySQL via `mysql2` e geração de views com EJS.
 
 ### Objetivos pedagógicos
 
@@ -266,10 +67,9 @@ Esta estrutura é proposital: mantém a separação de responsabilidades (MVC) e
 
 ---
 
-## Arquitetura e como o projeto funciona (visão prática)
+## Arquitetura e como o projeto funciona 
 
-Esta seção explica os principais elementos do projeto com trechos reais do código para ajudar a entender o fluxo.
-
+Routes → Controllers (dentro das próprias rotas) → Views (EJS).
 ### Views (EJS)
 
 As views são templates EJS que geram HTML no servidor. Exemplo: `views/index.ejs` (listagem pública) — inclui `partials/header` e `partials/footer`, itera as notícias e formata datas:
@@ -277,24 +77,21 @@ As views são templates EJS que geram HTML no servidor. Exemplo: `views/index.ej
 Trecho (simplificado):
 
 ```ejs
-<%- include('partials/header', { titulo: titulo }) %>
+<%- include('partials/header', { titulo: 'Página Inicial' }) %>
 
-<section class="noticias-grid">
-  <h1 class="hero-title"><%= titulo %></h1>
-  <% if (noticias.length === 0) { %>
-    <p>Nenhuma notícia encontrada.</p>
-  <% } else { %>
-    <% noticias.forEach(n => { %>
-      <article class="news-card">
-        <h2><a href="/noticia/<%= n.id %>"><%= n.titulo %></a></h2>
-        <p><%= n.resumo %>...</p>
-      </article>
-    <% }) %>
-  <% } %>
-</section>
+<h1>Bem-vindo!</h1>
+<p>Conteúdo informativo do site.</p>
 
 <%- include('partials/footer') %>
+
 ```
+## Principais páginas:
+
+index.ejs — página inicial
+dicas.ejs — página de dicas
+sobre.ejs — página sobre
+login.ejs — autenticação
+register.ejs — cadastro
 
 Observações:
 - As partials (`partials/header.ejs`) permitem compartilhar o layout (head, nav, footer).
@@ -307,35 +104,48 @@ As rotas mapeiam URLs para funções nos Controllers. O arquivo `routes/noticias
 Trecho (resumido):
 
 ```js
-// routes/noticias.js
-routerPublic.get('/', asyncHandler(NoticiaController.indexPublic));
-routerPublic.get('/noticia/:id', asyncHandler(NoticiaController.viewNoticia));
+router.get('/', ...);          // Página inicial
+router.get('/dicas', ...);     // Dicas
+router.get('/sobre', ...);     // Sobre
+router.get('/login', ...);
+router.post('/login', ...);
+router.get('/register', ...);
+router.post('/register', ...);
 
-routerAdmin.get('/nova', asyncHandler(NoticiaController.novaForm));
-routerAdmin.post('/nova', asyncHandler(NoticiaController.criar));
 ```
 
 No `app.js` esses routers são montados:
 
+ ## routes/admin.js
+Rotas protegidas (admin):
 ```js
-app.use('/', noticiasRoutes.public);
-app.use('/admin/noticias', verificaLogin, noticiasRoutes.admin);
-```
+router.get('/', verificaLogin, ...);  // Dashboard admin
+router.get('/usuarios', ...);        // Listagem de usuários
 
-Dica: as rotas administrativas são protegidas por middleware (`verificaLogin`, `verificaAdmin`) definido em `app.js`.
+```
+## Montagem no app.js:
+```js
+app.use('/', publicRoutes);
+app.use('/admin', adminRoutes);
+
+````
 
 ### Controllers
 
-Controllers contêm a lógica de negócio e são responsáveis por chamar Models e renderizar Views. Exemplo: `controllers/NoticiaController.js` — método que lista notícias públicas:
+Controllers contêm a lógica de negócio e são responsáveis por chamar Models e renderizar Views. Exemplo: `controllers/PublicController.js` — método que lista notícias públicas:
 
 ```js
-exports.indexPublic = async (req, res) => {
-  const noticias = await Noticia.listar(50);
-  res.render('index', { titulo: 'Últimas notícias', noticias });
-};
-```
+router.post('/login', async (req, res) => {
+    const { email, senha } = req.body;
+    const [rows] = await db.query("SELECT * FROM usuarios WHERE email = ?", [email]);
 
-Métodos de criação e atualização constroem instâncias dos Models e chamam `salvar()` / `atualizar()`.
+    if (!rows.length) return res.render('login', { erro: "Usuário não encontrado" });
+
+    req.session.usuario = rows[0];
+    res.redirect('/admin');
+});
+
+```
 
 ### Models / Acesso ao banco
 
@@ -346,58 +156,25 @@ Os models encapsulam queries SQL e usam `config/db.js` que exporta um pool `mysq
 ```js
 const mysql = require('mysql2/promise');
 const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASS || '',
-  database: process.env.DB_NAME || 'portal_noticias',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
 });
 module.exports = pool;
+
 ```
 
 Exemplo de Model: `models/Noticia.js` — métodos estáticos que realizam selects e inserções preparadas:
 
 ```js
-static async listar(limit = 20) {
-  const [rows] = await db.query(`SELECT n.id, n.titulo, LEFT(n.conteudo, 300) AS resumo, ... LIMIT ?`, [limit]);
-  return rows;
-}
+const [rows] = await db.query("SELECT * FROM usuarios");
 
-async salvar() {
-  const [result] = await db.execute('INSERT INTO noticias (titulo, conteudo, id_categoria, id_autor) VALUES (?, ?, ?, ?)', [this.titulo, this.conteudo, this.id_categoria, this.id_autor]);
-  this.id = result.insertId;
-  return this;
-}
 ```
 
 Pontos importantes:
 - Sempre use placeholders (`?`) em queries para evitar SQL Injection.
 - `mysql2/promise` facilita o uso com `async/await`.
-
-### Seeders (script de inicialização)
-
-O projeto fornece `scripts/seed.js` que cria tabelas se não existirem e popula dados iniciais (categoria "Geral", usuário admin, notícia exemplo).
-
-Execução:
-
-```bash
-npm run seed
-```
-
-### Middleware
-
-Middleware são funções que executam antes do handler final. Exemplos no projeto:
-
-- `middleware/asyncHandler.js` — wrapper para capturar erros em funções async e repassá-los ao `next()`:
-
-```js
-module.exports = function asyncHandler(fn) {
-  return function (req, res, next) {
-    Promise.resolve(fn(req, res, next)).catch(next);
-  };
-};
-```
-
-- `verificaLogin` e `verificaAdmin` (definidos em `app.js`) — protegem rotas administrativas verificando `req.session.usuario` e `req.session.usuario.perfil`.
 
 ### Sessões e autenticação
 
@@ -634,4 +411,3 @@ Contribuições são bem-vindas. Passos sugeridos:
 Pequenas melhorias possíveis: adicionar upload de imagens, paginação, API REST JSON, testes automatizados.
 - `npm install` — instala dependências
 
->>>>>>> 8bea997 (Atualização do CSS e Cadastro)
